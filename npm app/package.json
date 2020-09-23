@@ -1,0 +1,18 @@
+{
+  "name": "npm-app",
+  "version": "1.0.0",
+  "description": "Learning..",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "live-server"
+  },
+  "author": "Kartik Patel",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
