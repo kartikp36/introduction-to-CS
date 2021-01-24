@@ -2,6 +2,7 @@ class Node:
     def __init__(self, item=None, link=None):
         self.item = item
         self.next = link
+
     def __str__(self):
         return str(self.item)
 
@@ -40,7 +41,7 @@ class LinkedList:
             node.next = Node(item, node.next)
         self.count += 1
 
-    def pop(self,*index):
+    def pop(self, *index):
         if index:
             index = index[0]
             pass
@@ -54,25 +55,27 @@ class LinkedList:
             node = self._get_node(index-1)
             node.next = node.next.next
         self.count -= 1
-    def remove(self, key): 
-        temp = self.head  
-        if (temp is not None):  
-            if (temp.item == key):  
+
+    def remove(self, key):
+        temp = self.head
+        if (temp is not None):
+            if (temp.item == key):
                 self.head = temp.next
                 temp = None
                 return
-        while(temp is not None):  
-            if temp.item == key:  
+        while(temp is not None):
+            if temp.item == key:
                 break
-            prev = temp  
+            prev = temp
             temp = temp.next
-        if(temp == None):  
+        if(temp is None):
             return
         prev.next = temp.next
         temp = None
 
     def __iter__(self):
         return MyLinkedListIterator(self.head)
+
 
 class MyLinkedListIterator:
 
@@ -109,5 +112,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-

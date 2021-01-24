@@ -1,5 +1,6 @@
 import ctypes
 
+
 def build_array(size):
     """
     This function creates an array of references to Python Objects.
@@ -16,7 +17,8 @@ def build_array(size):
     array[:] = size * [None]
     return array
 
-class HashTableLinear:                      
+
+class HashTableLinear:
 
     def __init__(self, size=7919, base=31415):
         self.count = 0
@@ -63,8 +65,8 @@ class HashTableLinear:
         delimeter = ""
         for item in self.array:
             if item is not None:
-                (key,value) = item
-                ans +=  delimeter + str(key) + ":" + str(value)
+                (key, value) = item
+                ans += delimeter + str(key) + ":" + str(value)
                 delimeter = ","
         ans += "}"
         return ans
@@ -80,4 +82,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
