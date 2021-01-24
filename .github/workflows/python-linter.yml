@@ -24,9 +24,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      - uses: sunnysid3up/python-linter@v0.1-beta.7
-      - with:
+      - name: lint
+        uses: sunnysid3up/python-linter@v0.1-beta.7
+        with:
             # Source file or directory
             source: "src"
             # Set strictness for lint [low, medium, high]
