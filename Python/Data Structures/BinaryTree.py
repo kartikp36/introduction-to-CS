@@ -6,7 +6,7 @@ class Node:
 
     def __str__(self):
         return str(self.item)
-        
+
 
 def print_structure(node):
     current_node = node
@@ -15,6 +15,7 @@ def print_structure(node):
         print(current_node, end=", ")
         current_node = current_node.next
     print("]")
+
 
 class Stack:
     def __init__(self):
@@ -32,6 +33,7 @@ class Stack:
         self.top = self.top.next
         return item
 
+
 class TreeNode:
 
     def __init__(self, item=None, left=None, right=None):
@@ -44,6 +46,7 @@ class TreeNode:
 
     def is_leaf(self):
         return self.left is None and self.right is None
+
 
 class BinaryTree:
 
@@ -63,9 +66,11 @@ class BinaryTree:
         try:
             bit = next(bitstring_iterator)
             if bit == "0":
-                current.left = self.add_aux(current.left, item, bitstring_iterator)
+                current.left = self.add_aux(
+                    current.left, item, bitstring_iterator)
             elif bit == "1":
-                current.right = self.add_aux(current.right, item, bitstring_iterator)
+                current.right = self.add_aux(
+                    current.right, item, bitstring_iterator)
             else:
                 raise ValueError("Bitstring location is not a bitstring")
         except StopIteration:
@@ -138,11 +143,11 @@ class PreOrderIterator:
 
 def main():
     my_tree = BinaryTree()
-    my_tree.add(1,'')
-    my_tree.add(2,'1')
-    my_tree.add(3,'0')
+    my_tree.add(1, '')
+    my_tree.add(2, '1')
+    my_tree.add(3, '0')
     print(my_tree.get_leaves())
-    my_tree.add(4,'01')
+    my_tree.add(4, '01')
     print(my_tree.get_leaves())
 
 

@@ -1,11 +1,12 @@
 class TrieNode(object):
-    
+
     def __init__(self, char: str):
         self.char = char
         self.children = []
         self.word_finished = False
         self.counter = 1
-    
+
+
 def add(root, word: str):
     node = root
     for char in word:
@@ -38,6 +39,7 @@ def find_prefix(root, prefix: str):
             return False
     return True
 
+
 def search(root, prefix: str):
     node = root
     if not root.children:
@@ -54,6 +56,8 @@ def search(root, prefix: str):
     if node.word_finished:
         return True
     return False
+
+
 if __name__ == "__main__":
     root = TrieNode('')
     add(root, "hackathon")

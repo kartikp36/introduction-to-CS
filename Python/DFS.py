@@ -1,48 +1,52 @@
-# Python program to print DFS traversal for complete graph 
-from collections import defaultdict 
+# Python program to print DFS traversal for complete graph
+from collections import defaultdict
 
-# This class represents a directed graph using adjacency list representation 
-class Graph: 
+# This class represents a directed graph using adjacency list representation
 
-	def __init__(self): 
 
-		self.graph = defaultdict(list) 
+class Graph:
 
-	def addEdge(self,u,v): 
-		self.graph[u].append(v) 
+    def __init__(self):
 
-	def DFSUtil(self, v, visited): 
+        self.graph = defaultdict(list)
 
-		# Mark the current node as visited and print it 
-		visited[v]= True
-		print(v, end=" ") 
+    def addEdge(self, u, v):
+        self.graph[u].append(v)
 
-		# Recur for all the vertices adjacent to this vertex 
-		for i in self.graph[v]: 
-			if visited[i] == False: 
-				self.DFSUtil(i, visited) 
+    def DFSUtil(self, v, visited):
 
-	# The function to do DFS traversal. It uses 
-	# recursive DFSUtil() 
-	def DFS(self): 
-		V = len(self.graph) #total vertices 
+        # Mark the current node as visited and print it
+        visited[v] = True
+        print(v, end=" ")
 
-		# Mark all the vertices as not visited 
-		visited =[False]*(V) 
+        # Recur for all the vertices adjacent to this vertex
+        for i in self.graph[v]:
+            if not visited[i]:
+                self.DFSUtil(i, visited)
 
-		# Call the recursive helper function to print DFS traversal starting from all vertices one by one 
-		for i in range(V): 
-			if visited[i] == False: 
-				self.DFSUtil(i, visited) 
+    # The function to do DFS traversal. It uses
+    # recursive DFSUtil()
+    def DFS(self):
+        V = len(self.graph)  # total vertices
 
-g = Graph() 
-g.addEdge(0, 1) 
-g.addEdge(0, 2) 
-g.addEdge(1, 2) 
-g.addEdge(2, 0) 
-g.addEdge(2, 3) 
-g.addEdge(3, 3) 
+        # Mark all the vertices as not visited
+        visited = [False]*(V)
+
+        # Call the recursive helper function to print DFS traversal
+        # starting from all vertices one by one
+        for i in range(V):
+            if not visited[i]:
+                self.DFSUtil(i, visited)
+
+
+g = Graph()
+g.addEdge(0, 1)
+g.addEdge(0, 2)
+g.addEdge(1, 2)
+g.addEdge(2, 0)
+g.addEdge(2, 3)
+g.addEdge(3, 3)
 
 print("Following is Depth First Traversal :")
-g.DFS() 
+g.DFS()
 print('\n')

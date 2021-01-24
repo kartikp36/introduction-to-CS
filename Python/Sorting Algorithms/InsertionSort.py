@@ -7,4 +7,3 @@ def InsertionSort(arr):
             j -= 1
         arr[j] = key
     return(arr)
-    

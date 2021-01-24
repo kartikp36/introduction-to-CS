@@ -23,4 +23,4 @@ def QuickSort(array, low, high):
 
     return array
 
-#QuickSort(array,0,len(array)-1)
+# QuickSort(array,0,len(array)-1)

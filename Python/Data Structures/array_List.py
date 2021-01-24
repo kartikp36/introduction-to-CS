@@ -1,5 +1,6 @@
 import ctypes
 
+
 def build_array(size):
     """
     This function creates an array of references to Python Objects.
@@ -15,7 +16,6 @@ def build_array(size):
     array = (size * ctypes.py_object)()
     array[:] = size * [None]
     return array
-
 
 
 class List:
@@ -50,7 +50,7 @@ class List:
             raise ValueError("List is empty")
 
         valid_index = index >= 0 and index < self.count
-        
+
         if valid_index:
             for i in range(index, self.count - 1):
                 self.array[i] = self.array[i+1]
@@ -80,4 +80,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

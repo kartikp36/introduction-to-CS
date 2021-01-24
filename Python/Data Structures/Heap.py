@@ -1,5 +1,6 @@
 import ctypes
 
+
 def build_array(size):
     """
     This function creates an array of references to Python Objects.
@@ -16,6 +17,7 @@ def build_array(size):
     array[:] = size * [None]
     return array
 
+
 class Heap:
 
     def __init__(self):
@@ -27,8 +29,8 @@ class Heap:
         delimeter = ""
         for item in self.array:
             if item is not None:
-                key,value = item
-                ans +=  delimeter + str(value)
+                key, value = item
+                ans += delimeter + str(value)
                 delimeter = ","
         ans += "]"
         return ans
@@ -36,11 +38,11 @@ class Heap:
     def swap(self, i, j):
         self.array[i], self.array[j] = self.array[j], self.array[i]
 
-    def rise(self,k): 
-    	while k > 1 and self.array[k] > self.array[k//2]:
-    		self.swap(k,k//2) 
-    		k //= 2
-    
+    def rise(self, k):
+        while k > 1 and self.array[k] > self.array[k//2]:
+            self.swap(k, k//2)
+            k //= 2
+
     def add(self, key, value):
         item = (value, key)
         if self.count + 1 < len(self.array):
@@ -68,10 +70,6 @@ def main():
     my_heap.add("max", 20)
     print(my_heap)
 
+
 if __name__ == "__main__":
     main()
-
-
-
-
-
