@@ -22,6 +22,6 @@ jobs:
       - name: Install flake8
         run: pip install flake8
       - name: Run flake8
-        run: flake8 . --count --show-source --statistics --append-config ./.flake8 
+        run: flake8 . --count --show-source --statistics --append-config .github/workflows/.flake8 
       - name: Test Insertion Sort
         run: python Python/sortTest/testInsertionSort.py
