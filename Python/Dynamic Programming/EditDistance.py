@@ -56,10 +56,8 @@ def editDist(first_string, second_string):
                 # first_string to second_string
                 distance[first_sub_string][second_sub_string] = 1 + min(
                     distance[first_sub_string][second_sub_string - 1],  # Insert
-                    distance[first_sub_string - \
-                             1][second_sub_string],  # Remove
-                    distance[first_sub_string - \
-                             1][second_sub_string - 1],  # Replace
+                    distance[first_sub_string-1][second_sub_string],  # Remove
+                    distance[first_sub_string-1][second_sub_string-1],  # Replace
                 )
     return distance[first_length][second_length]
 
