@@ -35,8 +35,7 @@ Every object is created by instantiating a class, that's why object is an instan
 
 Define operations that can be performed by any object created as an instance of the class.
 The `__init__` method is by convention the first method in a class.
-Instance variables start with `  self`:
- Their value is specific to each instance.
+Instance variables start with ` self`:
+Their value is specific to each instance.
 • Their name is global to all methods in the class. You can access it from every method in the class.
 • If a variable does not start with self it is local to the method that binds it. Local variables can’t be seen by other methods.
-
