@@ -9,7 +9,7 @@ Unbalanced : For N nodes height = N
 
 - add - by using bitstring (0-left, 1-right)
 - leaves - if left and right are none
-  > Binary Tree Implementation : https://github.com/Kartikp2002/IntroductionToCS/blob/master/Python/BinaryTree.py
+  > Binary Tree Implementation : https://github.com/Kartikp2002/IntroductionToCS/blob/master/Python/binary_tree.py
 
 ## Binary Search Tree :
 

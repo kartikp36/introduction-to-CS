@@ -55,4 +55,4 @@ Dictionary is unordered, changeable and indexed. In Python, dictionaries are wri
 
 - insert - O(1)
 - remove - O(1)
-  > LinkedList Implementation : https://github.com/Kartikp2002/IntroductionToCS/blob/master/Python/LinkedList.py
+  > LinkedList Implementation : https://github.com/Kartikp2002/IntroductionToCS/blob/master/Python/linked_list.py
