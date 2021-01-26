@@ -24,4 +24,5 @@ jobs:
       - name: Run flake8
         run: flake8 . --count --show-source --statistics --append-config Python/.flake8 
       - name: Test Insertion Sort
-        run: python Python/sortTest/testInsertionSort.py
+        run: python Python/sort_test/test_insertion_sort.py 
+
