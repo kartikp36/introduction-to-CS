@@ -9,7 +9,7 @@ elements are filled from 1st index such that :
   or parent of element at k is at k//2.
 
 > Heap Implementation :
-> https://github.com/Kartikp2002/IntroductionToCS/blob/master/Python/heap.py
+> https://github.com/Kartikp2002/IntroductionToCS/blob/master/Python/data_structures/heap.py
 
 ### Max Heap :
 
