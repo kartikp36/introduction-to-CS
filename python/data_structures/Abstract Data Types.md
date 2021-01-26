@@ -8,7 +8,7 @@ There are 4 data types of array :
 
 A list is **ordered** and **mutable** (changeable). In Python lists are written with _square brackets_.
 
-> My list implementation : https://github.com/kartikp36/IntroductionToCS/blob/master/Python/data_structures/array_list.py
+> My list implementation : [array_list.py](array_list.py)
 
 ### Tuples :
 
@@ -55,4 +55,4 @@ Dictionary is unordered, changeable and indexed. In Python, dictionaries are wri
 
 - insert - O(1)
 - remove - O(1)
-  > LinkedList Implementation : https://github.com/Kartikp2002/IntroductionToCS/blob/master/Python/data_structures/linked_list.py
+  > LinkedList Implementation : [linked_list.py](linked_list.py)
