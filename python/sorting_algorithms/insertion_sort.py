@@ -1,4 +1,4 @@
-def InsertionSort(arr):
+def insertion_sort(arr):
     for i in range(len(arr)):
         key = arr[i]
         j = i

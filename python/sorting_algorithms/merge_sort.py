@@ -1,11 +1,11 @@
-def MergeSort(arr):
+def merge_sort(arr):
     if len(arr) > 1:
         r = len(arr)//2
         L = arr[:r]
         M = arr[r:]
 
-        MergeSort(L)
-        MergeSort(M)
+        merge_sort(L)
+        merge_sort(M)
 
         i = j = k = 0
         while i < len(L) and j < len(M):
