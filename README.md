@@ -1,4 +1,4 @@
-# IntroductionToCS
+# Introduction To CS
 
 This is my repository for learning Computer Science!
 
