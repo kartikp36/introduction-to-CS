@@ -1,3 +1,4 @@
+// Queue implementation in C++
 
 #include <iostream>
 using namespace std;
@@ -20,6 +21,7 @@ public:
     }
     return full;
   };
+
   bool isEmpty()
   {
     bool empty = false;
@@ -42,6 +44,7 @@ public:
       queue[rear] = value;
     }
   };
+
   void deQueue()
   {
     if (isEmpty())
@@ -51,13 +54,26 @@ public:
     else
     {
       front++;
-      cout <<"Deleted: "<< queue[front] << endl;
+      cout << "Deleted: " << queue[front] << endl;
       if (isEmpty())
       {
         front = rear = -1;
       };
     };
   };
+
+  void peek()
+  {
+    if (isEmpty())
+    {
+      cout << "Queue is Empty. Nothing to peek!" << endl;
+    }
+    else
+    {
+      cout << "Peek: " << queue[front + 1] << endl;
+    };
+  };
+
   void display()
   {
     if (isEmpty())
@@ -85,6 +101,7 @@ int main()
   q.enQueue(3);
   q.display();
   q.deQueue();
+  q.peek();
   q.display();
   return 0;
 }
