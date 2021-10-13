@@ -5,94 +5,70 @@ using namespace std;
 
 const int SIZE = 10;
 
-class Queue
-{
-public:
+class Queue {
+ public:
   int front = -1;
   int rear = -1;
   int queue[SIZE];
 
-  bool isFull()
-  {
+  bool isFull() {
     bool full = false;
-    if (rear == SIZE - 1)
-    {
+    if (rear == SIZE - 1) {
       full = true;
     }
     return full;
   };
 
-  bool isEmpty()
-  {
+  bool isEmpty() {
     bool empty = false;
-    if (rear == front)
-    {
+    if (rear == front) {
       empty = true;
     }
     return empty;
   };
 
-  void enQueue(int value)
-  {
-    if (isFull())
-    {
+  void enQueue(int value) {
+    if (isFull()) {
       cout << "Queue is full. Insertion failed!" << endl;
-    }
-    else
-    {
+    } else {
       rear++;
       queue[rear] = value;
     }
   };
 
-  void deQueue()
-  {
-    if (isEmpty())
-    {
+  void deQueue() {
+    if (isEmpty()) {
       cout << "Queue is Empty. Deletion failed!" << endl;
-    }
-    else
-    {
+    } else {
       front++;
       cout << "Deleted: " << queue[front] << endl;
-      if (isEmpty())
-      {
+      if (isEmpty()) {
         front = rear = -1;
       };
     };
   };
 
-  void peek()
-  {
-    if (isEmpty())
-    {
+  void peek() {
+    if (isEmpty()) {
       cout << "Queue is Empty. Nothing to peek!" << endl;
-    }
-    else
-    {
+    } else {
       cout << "Peek: " << queue[front + 1] << endl;
     };
   };
 
-  void display()
-  {
-    if (isEmpty())
-    {
+  void display() {
+    if (isEmpty()) {
       cout << "Queue is Empty" << endl;
-    }
-    else
-    {
+    } else {
       cout << "Queue elements are: " << endl;
-      for (int i = front + 1; i <= rear; i++)
-      {
+      for (int i = front + 1; i <= rear; i++) {
         cout << queue[i] << endl;
       }
     };
   };
 };
 
-int main()
-{
+int main() {
   Queue q;
   q.display();
   q.enQueue(1);
