@@ -3,175 +3,167 @@
 #include <iostream>
 using namespace std;
 
-struct Node {
-  int data;
-  struct Node *next;
-} *head = NULL;
+class Node {
+ public:
+  int data, length = 0;
+  class Node *next, *head = NULL;
 
-// Insertion
+  bool isEmpty() {
+    return (length == 0);
+  }
 
-void insertAtBeginning(int value) {
-  struct Node *new_node;
-  new_node = (struct Node *)malloc(sizeof(struct Node));
-  new_node->data = value;
-  if (head == NULL) {
-    new_node->next = NULL;
-    head = new_node;
-  } else {
+  void insertAtBeginning(int value) {
+    Node *new_node = (Node *)malloc(sizeof(Node));
+    new_node->data = value;
     new_node->next = head;
     head = new_node;
+    cout << " Node inserted at the beginning!" << endl;
+    length++;
   }
-  cout << " Node inserted at the beginning!" << endl;
-}
 
-void insertAfter(int value, int location) {
-  struct Node *new_node;
-  new_node = (struct Node *)malloc(sizeof(struct Node));
-  new_node->data = value;
-  if (head == NULL) {
+  void insertAfter(int value, int location) {
+    Node *new_node = (Node *)malloc(sizeof(Node));
+    new_node->data = value;
+    if (isEmpty()) {
+      new_node->next = NULL;
+      head = new_node;
+    } else {
+      Node *temp = head;
+      while (temp->data != location) {
+        temp = temp->next;
+      }
+      new_node->next = temp->next;
+      temp->next = new_node;
+    }
+    cout << " Node inserted!" << endl;
+    length++;
+  }
+
+  void insertAtEnd(int value) {
+    Node *new_node = (Node *)malloc(sizeof(Node));
+    new_node->data = value;
     new_node->next = NULL;
-    head = new_node;
-  } else {
-    struct Node *temp = head;
-    while (temp->data != location) {
-      temp = temp->next;
-      // if (temp->next == NULL)
-      // {
-      //   cout << " Given node not found in the LinkedLst. Insertion
-      //   failed!" << endl; break;
-      // };
-    }
-    new_node->next = temp->next;
-    temp->next = new_node;
-  }
-  cout << " Node inserted!" << endl;
-}
-
-void insertAtEnd(int value) {
-  struct Node *new_node;
-  new_node = (struct Node *)malloc(sizeof(struct Node));
-  new_node->data = value;
-  new_node->next = NULL;
-  if (head == NULL) {
-    head = new_node;
-  } else {
-    struct Node *temp = head;
-    while (temp->next != NULL) {
-      temp = temp->next;
-    };
-    temp->next = new_node;
-  }
-  cout << " Node inserted at the end!" << endl;
-}
-
-// Deletion
-
-void deleteAtBeginning() {
-  if (head == NULL) {
-    cout << "List is empty. Deletion failed!" << endl;
-  } else {
-    struct Node *temp;
-    temp = (struct Node *)malloc(sizeof(struct Node));
-    temp = head;
-    if (temp->next == NULL) {
-      head = NULL;
+    if (isEmpty()) {
+      head = new_node;
     } else {
-      head = temp->next;
+      Node *temp = head;
+      while (temp->next != NULL) {
+        temp = temp->next;
+      };
+      temp->next = new_node;
     }
-    delete temp;
+    cout << " Node inserted at the end!" << endl;
+    length++;
   }
-  cout << " Node at the beginning deleted!" << endl;
-}
 
-void deleteAtEnd() {
-  if (head == NULL) {
-    cout << "List is empty. Deletion failed!" << endl;
-  } else {
-    struct Node *temp1, *temp2;
-    temp1 = (struct Node *)malloc(sizeof(struct Node));
-    temp2 = (struct Node *)malloc(sizeof(struct Node));
-    temp1 = head;
-    if (temp1->next == NULL) {
-      head = NULL;
+  void deleteAtBeginning() {
+    if (isEmpty()) {
+      cout << "List is empty. Deletion failed!" << endl;
     } else {
-      while (temp1->next != NULL) {
+      Node *temp = (Node *)malloc(sizeof(Node));
+      temp = head;
+      if (temp->next == NULL) {
+        head = NULL;
+      } else {
+        head = temp->next;
+      }
+      delete temp;
+    }
+    cout << " Node at the beginning deleted!" << endl;
+    length--;
+  }
+
+  void deleteAtEnd() {
+    if (isEmpty()) {
+      cout << "List is empty. Deletion failed!" << endl;
+    } else {
+      Node *temp1 = (Node *)malloc(sizeof(Node));
+      Node *temp2 = (Node *)malloc(sizeof(Node));
+      temp1 = head;
+      if (temp1->next == NULL) {
+        head = NULL;
+      } else {
+        while (temp1->next != NULL) {
+          temp2 = temp1;
+          temp1 = temp1->next;
+        };
+        temp2->next = NULL;
+      }
+      delete temp1;
+    }
+    cout << " Node at the end deleted!" << endl;
+    length--;
+  }
+
+  void deleteNode(int value) {
+    if (isEmpty()) {
+      cout << "List is empty. Deletion failed!" << endl;
+    } else {
+      Node *temp1 = (Node *)malloc(sizeof(Node));
+      Node *temp2 = (Node *)malloc(sizeof(Node));
+      temp1 = head;
+
+      while (temp1->data != value) {
+        if (temp1->next == NULL) {
+          cout << "Given node not found. Deletion failed!" << endl;
+          return;
+        }
         temp2 = temp1;
         temp1 = temp1->next;
       };
-      temp2->next = NULL;
-    }
-    delete temp1;
-  }
-  cout << " Node at the end deleted!" << endl;
-}
-
-void deleteNode(int value) {
-  if (head == NULL) {
-    cout << "List is empty. Deletion failed!" << endl;
-  } else {
-    struct Node *temp1, *temp2;
-    temp1 = (struct Node *)malloc(sizeof(struct Node));
-    temp2 = (struct Node *)malloc(sizeof(struct Node));
-    temp1 = head;
-
-    while (temp1->data != value) {
-      if (temp1->next == NULL) {
-        cout << "Given node not found. Deletion failed!" << endl;
-        return;
+      // if temp1 is first node
+      if (temp1 == head) {
+        head = head->next;
       }
-      temp2 = temp1;
-      temp1 = temp1->next;
-    };
-    // if temp1 is first node
-    if (temp1 == head) {
-      head = head->next;
-    }
 
-    else {
-      temp2->next = temp1->next;
+      else {
+        temp2->next = temp1->next;
+      }
+      delete temp1;
     }
-    delete temp1;
+    cout << " Node: " << value << " deleted!" << endl;
+    length--;
   }
-  cout << " Node: " << value << " deleted!" << endl;
-}
-// Display
 
-void display() {
-  if (head == NULL) {
-    cout << " List is Empty" << endl;
-  } else {
-    struct Node *temp = head;
+  void display() {
+    if (isEmpty()) {
+      cout << " List is Empty" << endl;
+    } else {
+      Node *temp = head;
 
-    cout << "\n Linked List elements are: " << endl;
-    while (temp != NULL) {
-      cout << temp->data << " --> ";
-      temp = temp->next;
+      cout << "\n Linked List elements are: " << endl;
+      while (temp != NULL) {
+        cout << temp->data << " --> ";
+        temp = temp->next;
+      }
+      cout << "NULL" << endl;
     }
-    cout << "NULL" << endl;
   }
-}
+};
 
 int main() {
-  insertAtEnd(1);
-  display();
-  insertAtBeginning(2);
-  insertAtBeginning(3);
-  display();
-  insertAtEnd(4);
-  insertAtEnd(5);
-  display();
-  insertAfter(6, 1);
-  display();
-  deleteAtBeginning();
-  display();
-  deleteAtEnd();
-  display();
-  deleteNode(6);
-  display();
-  deleteNode(4);
-  display();
-  deleteNode(2);
-  display();
+  1 != 2;
+  Node head1, *head2;
+  head1.insertAtEnd(1);
+  head1.display();
+  head1.insertAtBeginning(2);
+  head1.insertAtBeginning(3);
+  head1.display();
+  head1.insertAtEnd(4);
+  head1.insertAtEnd(5);
+  head1.display();
+  head1.insertAfter(6, 1);
+  head1.display();
+  head1.deleteAtBeginning();
+  head1.display();
+  head1.deleteAtEnd();
+  head1.display();
+  head1.deleteNode(6);
+  head1.display();
+  head1.deleteNode(4);
+  head1.display();
+  head1.deleteNode(2);
+  head1.display();
   cout << "\n Final Linked list: ";
-  display();
+  head1.display();
 }
