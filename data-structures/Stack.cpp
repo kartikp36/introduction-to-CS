@@ -10,16 +10,15 @@ class Stack {
   int top = -1;
   int stack[SIZE];
 
-  bool isValid() {
-    bool flag = false;
-    if (top == SIZE - 1) {
-      flag = true;
-    }
-    return flag;
+  bool isFull() {
+    return (top == SIZE - 1);
   };
-
+  
+  bool isEmpty() {
+    return (top == -1);
+  };
   void push(int value) {
-    if (isValid()) {
+    if (isFull()) {
       cout << "Stack is full. Insertion failed!" << endl;
     } else {
       top++;
@@ -27,18 +26,18 @@ class Stack {
     }
   };
 
-  int pop() {
-    if (isValid()) {
+  void pop() {
+    if (isEmpty()) {
       cout << "Stack is Empty. Pop failed!" << endl;
     } else {
       int pop = stack[top];
       top--;
-      return pop;
+      cout << " Pop: " << pop << endl;
     };
   };
 
   void peek() {
-    if (isValid()) {
+    if (isEmpty()) {
       cout << "Stack is Empty. Nothing to peek!" << endl;
     } else {
       cout << "Peek: " << stack[top] << endl;
@@ -46,7 +45,7 @@ class Stack {
   };
 
   void display() {
-    if (isValid()) {
+    if (isEmpty()) {
       cout << "Stack is Empty" << endl;
     } else {
       cout << "Stack elements are: " << endl;
@@ -65,7 +64,7 @@ int main() {
   my_stack.push(2);
   my_stack.push(3);
   my_stack.display();
-  cout << "Pop:" << my_stack.pop() << endl;
+  my_stack.pop();
   my_stack.peek();
   my_stack.display();
   return 0;
