@@ -6,7 +6,7 @@ using namespace std;
 class Node {
  public:
   int data, length = 0;
-  class Node *next, *head = NULL;
+  class Node *next, *head = NULL, *tail = NULL;
 
   bool isEmpty() {
     return (length == 0);
@@ -16,6 +16,9 @@ class Node {
     Node *new_node = (Node *)malloc(sizeof(Node));
     new_node->data = value;
     new_node->next = head;
+    if (isEmpty()) {
+      tail = new_node;
+    }
     head = new_node;
     cout << " Node inserted at the beginning!" << endl;
     length++;
@@ -27,6 +30,7 @@ class Node {
     if (isEmpty()) {
       new_node->next = NULL;
       head = new_node;
+      tail = head;
     } else {
       Node *temp = head;
       while (temp->data != location) {
@@ -45,12 +49,10 @@ class Node {
     new_node->next = NULL;
     if (isEmpty()) {
       head = new_node;
+      tail = head;
     } else {
-      Node *temp = head;
-      while (temp->next != NULL) {
-        temp = temp->next;
-      };
-      temp->next = new_node;
+      tail->next = new_node;
+      tail = new_node;
     }
     cout << " Node inserted at the end!" << endl;
     length++;
@@ -64,6 +66,7 @@ class Node {
       temp = head;
       if (temp->next == NULL) {
         head = NULL;
+        tail = NULL;
       } else {
         head = temp->next;
       }
@@ -82,12 +85,14 @@ class Node {
       temp1 = head;
       if (temp1->next == NULL) {
         head = NULL;
+        tail = NULL;
       } else {
         while (temp1->next != NULL) {
           temp2 = temp1;
           temp1 = temp1->next;
         };
         temp2->next = NULL;
+        tail = temp2;
       }
       delete temp1;
     }
@@ -114,9 +119,10 @@ class Node {
       // if temp1 is first node
       if (temp1 == head) {
         head = head->next;
-      }
-
-      else {
+      } else if (temp1 == tail) {
+        temp2->next = temp1->next;
+        tail = temp2;
+      } else {
         temp2->next = temp1->next;
       }
       delete temp1;
@@ -164,6 +170,7 @@ int main() {
   head1.display();
   head1.deleteNode(2);
   head1.display();
+  head1.deleteAtBeginning();
   cout << "\n Final Linked list: ";
   head1.display();
 }
