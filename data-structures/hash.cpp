@@ -9,8 +9,8 @@ struct DataItem {
   int data, key;
 };
 
-struct DataItem* hashArray[SIZE];
-struct DataItem* deletedItem;
+struct DataItem* hash_array[SIZE];
+struct DataItem* deleted_item;
 struct DataItem* item;
 
 int hashCode(int key) {
@@ -18,14 +18,14 @@ int hashCode(int key) {
 }
 
 struct DataItem* search(int key) {
-  int hashIndex = hashCode(key);
+  int hash_index = hashCode(key);
 
-  while (hashArray[hashIndex] != NULL) {
-    if (hashArray[hashIndex]->key == key) {
-      return hashArray[hashIndex];
+  while (hash_array[hash_index] != NULL) {
+    if (hash_array[hash_index]->key == key) {
+      return hash_array[hash_index];
     }
-    hashIndex++;
-    hashIndex %= SIZE;
+    hash_index++;
+    hash_index %= SIZE;
   }
   return NULL;
 }
@@ -35,27 +35,27 @@ void insertItem(int key, int data) {
   item->data = data;
   item->key = key;
 
-  int hashIndex = hashCode(key);
+  int hash_index = hashCode(key);
 
-  while (hashArray[hashIndex] != NULL && hashArray[hashIndex]->key != -1) {
-    hashIndex++;
-    hashIndex %= SIZE;
+  while (hash_array[hash_index] != NULL && hash_array[hash_index]->key != -1) {
+    hash_index++;
+    hash_index %= SIZE;
   }
-  hashArray[hashIndex] = item;
+  hash_array[hash_index] = item;
 }
 
 struct DataItem* deleteItem(struct DataItem* item) {
   int key = item->key;
-  int hashIndex = hashCode(key);
+  int hash_index = hashCode(key);
 
-  while (hashArray[hashIndex] != NULL) {
-    if (hashArray[hashIndex]->key == key) {
-      struct DataItem* temp = hashArray[hashIndex];
-      hashArray[hashIndex] = deletedItem;
+  while (hash_array[hash_index] != NULL) {
+    if (hash_array[hash_index]->key == key) {
+      struct DataItem* temp = hash_array[hash_index];
+      hash_array[hash_index] = deleted_item;
       return temp;
     }
-    hashIndex++;
-    hashIndex %= SIZE;
+    hash_index++;
+    hash_index %= SIZE;
   }
   return NULL;
 }
@@ -64,8 +64,8 @@ void display() {
   int i = 0;
 
   for (i = 0; i < SIZE; i++) {
-    if (hashArray[i] != NULL)
-      cout << " (" << hashArray[i]->key << ", " << hashArray[i]->data << ")";
+    if (hash_array[i] != NULL)
+      cout << " (" << hash_array[i]->key << ", " << hash_array[i]->data << ")";
     else
       cout << " ~~ ";
   }
@@ -73,9 +73,9 @@ void display() {
 }
 
 int main() {
-  struct DataItem* deletedItem = new struct DataItem;
-  deletedItem->data = -1;
-  deletedItem->key = -1;
+  struct DataItem* deleted_item = new struct DataItem;
+  deleted_item->data = -1;
+  deleted_item->key = -1;
 
   insertItem(1, 10);
   insertItem(9, 12);
